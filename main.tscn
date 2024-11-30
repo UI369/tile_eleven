@@ -9,6 +9,10 @@ size = Vector2(16, 16)
 
 [node name="Node2D" type="Node2D"]
 
+[node name="GameTime" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [node name="agent" type="CharacterBody2D" parent="."]
 z_index = 1
 position = Vector2(24, 168)
@@ -26,3 +30,5 @@ texture = ExtResource("1_l3sai")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(88, 88)
 zoom = Vector2(3, 3)
+
+[connection signal="timeout" from="GameTime" to="agent" method="_on_game_time_timeout"]
