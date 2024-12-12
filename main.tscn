@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://f0yddvn805ty"]
+[gd_scene load_steps=7 format=3 uid="uid://f0yddvn805ty"]
 
 [ext_resource type="Script" path="res://agent.gd" id="1_i1s16"]
 [ext_resource type="Texture2D" uid="uid://cdhbxd4fwn0g4" path="res://tiles/Wagon.png" id="1_l3sai"]
+[ext_resource type="Resource" uid="uid://iebrc0ra1ro1" path="res://inventory/player_inventory.tres" id="2_a6vmt"]
 [ext_resource type="PackedScene" uid="uid://dmydknutop5tc" path="res://tilemap.tscn" id="2_xsvb4"]
+[ext_resource type="PackedScene" uid="uid://qo8fm2fyq5ip" path="res://inventory/inventory_ui.tscn" id="4_wnxu4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smhwl"]
 size = Vector2(16, 16)
@@ -17,6 +19,7 @@ autostart = true
 z_index = 1
 position = Vector2(24, 168)
 script = ExtResource("1_i1s16")
+inv = ExtResource("2_a6vmt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="agent"]
 shape = SubResource("RectangleShape2D_smhwl")
@@ -24,6 +27,12 @@ shape = SubResource("RectangleShape2D_smhwl")
 [node name="Sprite2D" type="Sprite2D" parent="agent"]
 z_index = 1
 texture = ExtResource("1_l3sai")
+
+[node name="InventoryUI" parent="agent" instance=ExtResource("4_wnxu4")]
+offset_left = -40.0
+offset_top = -74.0
+offset_right = 46.0
+offset_bottom = -10.0
 
 [node name="tilemap" parent="." instance=ExtResource("2_xsvb4")]
 

@@ -9,6 +9,8 @@ var data_tilemap: TileMapLayer
 var fog_tilemap: TileMapLayer
 var movement_strategy: Callable
 
+@export var inv: Inv
+
 func _ready() -> void:
 	var tilemap = get_parent().get_node("tilemap")
 	terrain_tilemap = tilemap.get_node("terrain")
@@ -95,3 +97,6 @@ func reveal_tile(pos: Vector2i):
 func get_terrain_data_at(pos: Vector2, prop: String):
 	var data = data_tilemap.get_cell_tile_data(pos)
 	return data.get_custom_data(prop)	
+
+func collect(item):
+	inv.insert(item)
